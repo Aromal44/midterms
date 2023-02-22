@@ -18,16 +18,41 @@ import java.util.Scanner;
  */
 public class Status {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args)
-    {
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the user status code (zero,one,two,three) in string");
-    String code = in.next();
-    StausUser t= new StausUser();
-    t.statusDetail(code); 
+public enum UserStatus {
+    ACTIVE, INACTIVE, SUSPENDED;
+}
+
+public class User {
+    private String name;
+    private int age;
+    private UserStatus status;
+
+    public User(String name, int age, UserStatus status) {
+        this.name = name;
+        this.age = age;
+        this.status = status;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus newStatus) {
+        status = newStatus;
+    }
+
+    public static void main(String[] args) {
+        User user = new User("John", 25, UserStatus.ACTIVE);
+        System.out.println("User status: " + user.getStatus());
+    }
+}
     
 }
